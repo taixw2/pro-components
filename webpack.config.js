@@ -33,14 +33,14 @@ tailPkgs.forEach((pkg) => {
   const entry = {};
   entry[`${pkg}`] = `./packages/${pkg}/src/index.tsx`;
   if (!isCI) {
-    entry[`${pkg}.min`] = `./packages/${pkg}/src/index.tsx`;
+    // entry[`${pkg}.min`] = `./packages/${pkg}/src/index.tsx`;
   }
   const config = {
     entry,
     output: {
-      filename: '[name].js',
+      filename: 'index.js',
       library: `Pro${pkg.toLowerCase().replace(/( |^)[a-z]/g, (L) => L.toUpperCase())}`,
-      libraryTarget: 'umd',
+      libraryTarget: 'commonjs',
       path: path.resolve(__dirname, 'packages', pkg, 'dist'),
       globalObject: 'this',
     },
@@ -48,19 +48,9 @@ tailPkgs.forEach((pkg) => {
     resolve: {
       extensions: ['.ts', '.tsx', '.json', '.css', '.js', '.less'],
     },
-    optimization: isCI
-      ? {
-          minimize: true,
-          minimizer: [
-            new TerserPlugin({
-              include: /\.min\.js$/,
-            }),
-            new CssMinimizerPlugin({
-              include: /\.min\.js$/,
-            }),
-          ],
-        }
-      : { concatenateModules: false },
+    optimization: {
+      minimize: false,
+    },
     module: {
       rules: [
         {

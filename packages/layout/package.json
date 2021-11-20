@@ -18,7 +18,7 @@
   "sideEffects": [
     "*.less"
   ],
-  "main": "lib/index.js",
+  "main": "dist/index.js",
   "module": "es/index.js",
   "types": "lib/index.d.ts",
   "files": [

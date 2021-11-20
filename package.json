@@ -6,8 +6,8 @@
   ],
   "scripts": {
     "bootstrap": "node ./scripts/bootstrap.js",
-    "build": "npm run build-lib && webpack && node ./scripts/gen_less_entry.js",
-    "build-lib": "cross-env BUILD_TYPE=lib father-build && cross-env BUILD_TYPE=es father-build",
+    "build": "npm run build-lib && webpack && node ./copy-type.js",
+    "build-lib": "cross-env BUILD_TYPE=lib father-build",
     "changelog": "pro-changelog",
     "check-deps": "node ./scripts/checkDeps.js",
     "createRelease": "node ./scripts/createRelease.js",
@@ -35,7 +35,7 @@
     "ie >= 11"
   ],
   "resolutions": {
-    "prettier":"2.x"
+    "prettier": "2.x"
   },
   "devDependencies": {
     "@ant-design/icons": "^4.6.2",
@@ -61,9 +61,9 @@
     "@types/react-intl": "^3.0.0",
     "@types/react-responsive": "^8.0.1",
     "@types/react-router-dom": "^5.1.0",
+    "@types/shallowequal": "^1.1.1",
     "@types/warning": "^3.0.0",
     "@types/xhr-mock": "^2.0.0",
-    "@types/shallowequal": "^1.1.1",
     "@umijs/babel-preset-umi": "^3.0.14",
     "@umijs/fabric": "^2.6.2",
     "@umijs/plugin-analytics": "^0.2.2",
@@ -135,6 +135,7 @@
     "webpack-cli": "^4.7.0",
     "write-pkg": "^4.0.0",
     "xhr-mock": "^2.5.1",
+    "cpy": "^8.1.2",
     "yorkie": "^2.0.0"
   },
   "gitHooks": {
